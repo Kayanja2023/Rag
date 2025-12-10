@@ -128,38 +128,6 @@ flowchart TB
 4. Chunks + question + conversation history → GPT-4
 5. GPT-4 generates answer based on CV content
 6. Response displayed with source context
-        Docs[(Document Store)]
-        Index[FAISS Vector Index\n1536 dimensions\nCosine similarity]
-        Meta[Conversation Memory]
-    end
-    subgraph RAG["RAG Pipeline"]
-        Query[Query Processing]
-        QueryEmbed[Query Embedding]
-        Search[Similarity Search]
-        Context[Context Retrieval]
-        Prompt[Prompt Construction]
-        LLM[GPT-4 Model]
-    end
-    UI --> Upload
-    Upload --> Validate
-    Validate --> Parse
-    Parse --> Chunk
-    Chunk --> Embed
-    Embed --> Index
-    Parse --> Docs
-    UI --> Query
-    Query --> QueryEmbed
-    QueryEmbed --> Search
-    Search --> Index
-    Index --> Context
-    Context --> Prompt
-    Meta --> Prompt
-    Prompt --> LLM
-    LLM --> UI
-    LLM --> Meta
-    style Index fill:#4F46E5,color:#fff
-    style LLM fill:#6366F1,color:#fff
-```
 
 ---
 
